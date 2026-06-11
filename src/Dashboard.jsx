@@ -152,17 +152,23 @@ function TopAdsGrid({ ads, cpaQ, hrQ, csQ }) {
           const csCx   = mfc(a._cs,  csQ[0],  csQ[1],  true);
           return (
             <div key={i} style={{background:"#fff",borderRadius:14,border:"1px solid #ebebeb",overflow:"hidden",display:"flex",flexDirection:"column",boxShadow:"0 1px 4px rgba(0,0,0,.04)"}}>
-              <div style={{position:"relative",height:148,overflow:"hidden",background:"#eee",flexShrink:0}}>
-                {thumb
-                  ? <img src={thumb} alt={name} style={{width:"100%",height:"100%",objectFit:"cover"}}/>
-                  : <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",background:"#1a1a2e"}}><span style={{fontSize:28,opacity:.2}}>▶</span></div>
-                }
+              <div style={{position:"relative",height:220,overflow:"hidden",background:"#1a1a2e",flexShrink:0}}>
+                {a.url ? (
+                  <video src={a.url} muted autoPlay loop playsInline preload="metadata"
+                    style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}}
+                    onError={e=>{e.target.style.display="none";}}/>
+                ) : thumb ? (
+                  <img src={thumb} alt={name} style={{width:"100%",height:"100%",objectFit:"cover"}}/>
+                ) : (
+                  <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center"}}>
+                    <span style={{fontSize:28,opacity:.2,color:"#fff"}}>▶</span>
+                  </div>
+                )}
                 {a.url && (
                   <a href={a.url} target="_blank" rel="noopener noreferrer"
-                    style={{position:"absolute",inset:0,display:"flex",alignItems:"center",justifyContent:"center",textDecoration:"none"}}>
-                    <div style={{width:38,height:38,borderRadius:"50%",background:"rgba(255,255,255,.88)",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:"0 2px 8px rgba(0,0,0,.2)"}}>
-                      <span style={{fontSize:14,marginLeft:3,color:"#222"}}>▶</span>
-                    </div>
+                    title="Ouvrir dans un onglet"
+                    style={{position:"absolute",top:7,right:7,width:24,height:24,borderRadius:"50%",background:"rgba(0,0,0,.55)",display:"flex",alignItems:"center",justifyContent:"center",textDecoration:"none",color:"#fff",fontSize:11}}>
+                    ↗
                   </a>
                 )}
                 <div style={{position:"absolute",top:7,left:7,display:"flex",gap:4,flexWrap:"wrap"}}>
