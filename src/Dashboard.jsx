@@ -3,7 +3,7 @@ import { ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Respons
 import _ from "lodash";
 
 const THUMBS = {};
-const LOGO_SRC = "";
+const LOGO_SRC = `${import.meta.env.BASE_URL}ornikar-logo.png`;
 
 const PK = {"7":"7","15":"15","30":"30","90":"90","999":"all"};
 const PRESETS = [{l:"7J",d:7},{l:"15J",d:15},{l:"30J",d:30},{l:"90J",d:90},{l:"Tout",d:999}];
